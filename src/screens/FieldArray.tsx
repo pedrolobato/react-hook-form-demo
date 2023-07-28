@@ -2,12 +2,15 @@ import { useState } from "react";
 import { ScrollView, StyleSheet, View } from "react-native";
 import { Button, Card, Text, TextInput } from "react-native-paper";
 
-export default function FieldArray() {
-  const [name, setName] = useState("Maçã");
-  const [weight, setWeight] = useState("1,32t");
-  const [date, setDate] = useState("01/07/23");
+import ObjectPreview from "../components/ObjectPreview";
+import { formatDate } from "../utils/format/date.format";
 
-  async function onSubmit() {}
+export default function FieldArray() {
+  const [item, setItem] = useState("Maçã");
+  const [weight, setWeight] = useState("1,32t");
+  const [date, setDate] = useState("");
+
+  function onSubmit() {}
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
@@ -15,11 +18,12 @@ export default function FieldArray() {
         Colheita
       </Text>
       <Card style={styles.fieldContainer}>
+        <Card.Title title="Lote #1" />
         <Card.Content>
           <TextInput
-            value={name}
-            label="Nome"
-            onChangeText={setName}
+            value={item}
+            label="Item"
+            onChangeText={setItem}
             style={styles.spaceBottom}
             autoCorrect={false}
             autoCapitalize="none"
@@ -36,7 +40,7 @@ export default function FieldArray() {
             <TextInput
               value={date}
               label="Data"
-              onChangeText={setDate}
+              onChangeText={(text) => setDate(formatDate(text))}
               style={{ ...styles.spaceBottom, width: "55%" }}
               keyboardType="number-pad"
             />
@@ -44,44 +48,17 @@ export default function FieldArray() {
         </Card.Content>
       </Card>
       <Card style={styles.fieldContainer}>
+        <Card.Title title="Lote #2" />
         <Card.Content>
           <TextInput
-            value={name}
-            label="Nome"
-            onChangeText={setName}
+            value={item}
+            label="Item"
+            onChangeText={setItem}
             style={styles.spaceBottom}
             autoCorrect={false}
             autoCapitalize="none"
           />
 
-          <View style={styles.row}>
-            <TextInput
-              value={weight}
-              label="Peso"
-              onChangeText={setWeight}
-              style={{ ...styles.spaceBottom, width: "40%" }}
-              keyboardType="number-pad"
-            />
-            <TextInput
-              value={date}
-              label="Data"
-              onChangeText={setDate}
-              style={{ ...styles.spaceBottom, width: "55%" }}
-              keyboardType="number-pad"
-            />
-          </View>
-        </Card.Content>
-      </Card>
-      <Card style={styles.fieldContainer}>
-        <Card.Content>
-          <TextInput
-            value={name}
-            label="Nome"
-            onChangeText={setName}
-            style={styles.spaceBottom}
-            autoCorrect={false}
-            autoCapitalize="none"
-          />
           <View style={styles.row}>
             <TextInput
               value={weight}
@@ -113,6 +90,7 @@ export default function FieldArray() {
       <Button mode="contained" style={styles.spaceTop} onPress={onSubmit}>
         Salvar
       </Button>
+      <ObjectPreview data={{}} />
     </ScrollView>
   );
 }

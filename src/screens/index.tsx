@@ -32,7 +32,11 @@ export default function Screens(): JSX.Element {
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="Simple" component={Simple} />
         <Stack.Screen name="Validations" component={Validations} />
-        <Stack.Screen name="TransformAndParse" component={TransformAndParse} />
+        <Stack.Screen
+          name="TransformAndParse"
+          options={{ title: "Transform and Parse" }}
+          component={TransformAndParse}
+        />
         <Stack.Screen name="FieldArray" component={FieldArray} />
       </Stack.Navigator>
     </NavigationContainer>

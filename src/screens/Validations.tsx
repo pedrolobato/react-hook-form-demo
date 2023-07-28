@@ -2,12 +2,14 @@ import { useState } from "react";
 import { StyleSheet, View } from "react-native";
 import { Button, Text, TextInput } from "react-native-paper";
 
+import ObjectPreview from "../components/ObjectPreview";
+
 export default function Validations() {
   const [user, setUser] = useState("lobato");
   const [email, setEmail] = useState("lobato@gmail.com");
   const [password, setPassword] = useState("123456");
 
-  async function onSubmit() {}
+  function onSubmit() {}
 
   return (
     <View style={styles.container}>
@@ -41,6 +43,7 @@ export default function Validations() {
       <Button mode="contained" style={styles.spaceTop} onPress={onSubmit}>
         Cadastrar
       </Button>
+      <ObjectPreview data={{ user, email, password }} />
     </View>
   );
 }

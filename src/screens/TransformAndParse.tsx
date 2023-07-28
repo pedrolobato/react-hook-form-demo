@@ -2,10 +2,13 @@ import { useState } from "react";
 import { StyleSheet, View } from "react-native";
 import { Button, Text, TextInput } from "react-native-paper";
 
-export default function TransformAndParse() {
-  const [phoneNumber, setPhoneNumber] = useState("(31) 99999-9999");
+import ObjectPreview from "../components/ObjectPreview";
+import { formatPhoneNumber } from "../utils/format/phoneNumber.format";
 
-  async function onSubmit() {}
+export default function TransformAndParse() {
+  const [phoneNumber, setPhoneNumber] = useState("");
+
+  function onSubmit() {}
 
   return (
     <View style={styles.container}>
@@ -15,13 +18,14 @@ export default function TransformAndParse() {
       <TextInput
         value={phoneNumber}
         label="Número de celular"
-        onChangeText={setPhoneNumber}
+        onChangeText={(text) => setPhoneNumber(formatPhoneNumber(text))}
         style={styles.spaceBottom}
         keyboardType="number-pad"
       />
       <Button mode="contained" style={styles.spaceTop} onPress={onSubmit}>
         Cadastrar
       </Button>
+      <ObjectPreview data={{ phoneNumber }} />
     </View>
   );
 }

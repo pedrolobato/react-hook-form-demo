@@ -1,13 +1,14 @@
 import { useState } from "react";
 import { StyleSheet, View } from "react-native";
 import { Button, Text, TextInput } from "react-native-paper";
-import CodePreview from "../components/CodePreview";
+
+import ObjectPreview from "../components/ObjectPreview";
 
 export default function Simple() {
   const [user, setUser] = useState("lobato");
   const [password, setPassword] = useState("123456");
 
-  async function onSubmit() {}
+  function onSubmit() {}
 
   return (
     <View style={styles.container}>
@@ -33,7 +34,7 @@ export default function Simple() {
       <Button mode="contained" style={styles.spaceTop} onPress={onSubmit}>
         Entrar
       </Button>
-      <CodePreview data={{ user, password }} />
+      <ObjectPreview data={{ user, password }} />
     </View>
   );
 }
